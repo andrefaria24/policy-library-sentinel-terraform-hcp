@@ -1,4 +1,4 @@
-# This policy blocks Terraform Apply when a provider not listed in the `allowed_providers` parameter is detected in the configuration.
+# Block Terraform Apply when a provider is not listed in the `allowed_providers` parameter.
 
 import "tfconfig/v2" as tfconfig
 

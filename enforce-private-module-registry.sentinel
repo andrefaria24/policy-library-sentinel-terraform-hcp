@@ -1,4 +1,4 @@
-# Set `organizations` parameter with required values, e.g. ["my-organization"]
+# Ensures all modules use come from the private module registry.
 
 import "tfconfig/v2" as tfconfig
 import "tfrun"
