@@ -1,0 +1,29 @@
+# Set `organizations` parameter with required values, e.g. ["my-organization"]
+
+import "tfconfig/v2" as tfconfig
+import "tfrun"
+import "strings"
+
+param address default "app.terraform.io" # HCP Terraform
+param organizations
+
+violatingModuleCalls = filter tfconfig.module_calls as index, moduleCall {
+  moduleCall.module_address is "" and
+  not any organizations as organization {
+    strings.has_prefix(moduleCall.source, address + "/" + organization)
+  }
+}
+
+if length(violatingModuleCalls) > 0 and not tfrun.is_destroy {
+  print("All modules called from the root module must come from a",
+        "private module registry in one of these organizations:", organizations, " on server", address)
+  for violatingModuleCalls as address, moduleCall {
+    print("The module", moduleCall.name, "called from the root module has source",
+          moduleCall.source)
+  }
+}
+
+validated = tfrun.is_destroy or length(violatingModuleCalls) is 0
+main = rule {
+ validated is true
+}

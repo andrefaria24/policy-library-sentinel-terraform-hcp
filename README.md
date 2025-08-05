@@ -1,0 +1,2 @@
+# HashiCorp Sentinel Policy Set for HCP Terraform
+Prescriptive Sentinel policies that can be used to establish granular Terraform configuration for managing HCP Terraform/Terraform Enterprise. These policies are primarily intended to serve as examples or building blocks for additional customization as required, but can be used directly to enforce certain policies when needed.
