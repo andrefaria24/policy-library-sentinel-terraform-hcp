@@ -1,6 +1,6 @@
 policy "enforce-private-module-registry" {
-  source = "./enforce-private-module-registry"
-  enforcement_level = "soft-mandatory"
+    source = "./enforce-private-module-registry"
+    enforcement_level = "soft-mandatory"
 }
 
 policy "providers-allowlist" {
