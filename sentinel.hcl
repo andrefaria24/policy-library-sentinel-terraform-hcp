@@ -1,4 +1,5 @@
 policy "enforce-private-module-registry" {
+  source = "./enforce-private-module-registry"
   enforcement_level = "soft-mandatory"
 }
 
